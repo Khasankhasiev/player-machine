@@ -1,7 +1,25 @@
 <template>
     <div class="container">
-        <a-button type="primary" @click="openPlayer">Открыть плеер</a-button>
-
+        <div @click="openPlayer" class="box">
+            <span>
+                <svg
+                    viewBox="64 64 896 896"
+                    focusable="false"
+                    data-icon="play-circle"
+                    width="30px"
+                    height="30px"
+                    fill="blueviolet"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+                    ></path>
+                    <path
+                        d="M719.4 499.1l-296.1-215A15.9 15.9 0 00398 297v430c0 13.1 14.8 20.5 25.3 12.9l296.1-215a15.9 15.9 0 000-25.8zm-257.6 134V390.9L628.5 512 461.8 633.1z"
+                    ></path>
+                </svg>
+            </span>
+        </div>
         <a-modal
             :open="isModalVisible"
             :width="modalWidth"
@@ -69,7 +87,6 @@ const initializePlayer = async () => {
         });
 
         playerInstance.ready(() => {
-            console.log('Плеер готов, начинаем воспроизведение');
             playerInstance.play();
         });
 
@@ -106,8 +123,19 @@ watch(
 }
 
 .container {
-    max-width: 1000px;
-    width: 100px;
+    max-width: 300px;
+    width: 100%;
     margin: 0 auto;
+}
+
+.box {
+    width: 300px;
+    height: 150px;
+    margin-top: 100px;
+    border: 1px solid blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 </style>
